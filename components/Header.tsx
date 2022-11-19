@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import SpringModal from "./Modal";
+import { Social } from "../typings";
+import { urlFor } from "../sanity";
 
-type Props = {};
+type Props = {
+  socials: Social[];
+};
 
-function Header({}: Props) {
+function Header({ socials }: Props) {
+  const [isOpen, setOpen] = useState(false);
   return (
     <div className="sticky top-0 filter z-20 py-5 flex items-center sm:px-16 px-6 h-[70px]">
       <div className="xl:max-w-[1280px] mx-auto w-full">
@@ -24,21 +30,16 @@ function Header({}: Props) {
             transition={{ duration: 1.5 }}
             className=""
           >
-            <SocialIcon
-              url="https://www.linkedin.com/in/oluwatobiloba-ibuola-1578765a/"
-              fgColor="gray"
-              bgColor="transparent"
-            />
-            <SocialIcon
-              url="https://github.com/OluwatobilobaIbuola"
-              fgColor="gray"
-              bgColor="transparent"
-            />
-            <SocialIcon
-              url="https://www.instagram.com/oluwatobilobaibuola"
-              fgColor="gray"
-              bgColor="transparent"
-            />
+            {socials?.map((item) => {
+              return (
+                <SocialIcon
+                  key={item._id}
+                  url={item?.url}
+                  fgColor="gray"
+                  bgColor="transparent"
+                />
+              );
+            })}
           </motion.div>
 
           <motion.div
@@ -54,14 +55,19 @@ function Header({}: Props) {
             }}
             transition={{ duration: 1 }}
             className="flex items-center text-gray-300 cursor-pointer"
+            onClick={() => setOpen(true)}
           >
             <SocialIcon network="email" fgColor="gray" bgColor="transparent" />
-            <Link href="#contact">
-              <p className="whitespace-nowrap hidden sm:inline-flex  uppercase text-sm text-gray-400">
-                Get in touch
-              </p>
-            </Link>
+
+            <p className="whitespace-nowrap hidden sm:inline-flex  uppercase text-sm text-gray-400">
+              Get in touch
+            </p>
           </motion.div>
+          <SpringModal isOpen={isOpen} setOpen={() => setOpen(false)}>
+            {/* <div className="border relative overflow-x-hidden pl-[32px] mb-[15px]">
+              Hello bro
+            </div> */}
+          </SpringModal>
         </div>
       </div>
     </div>

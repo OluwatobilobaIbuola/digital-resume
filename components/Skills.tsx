@@ -1,10 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Skill from "./Skill";
+import SkillChild from "./Skill";
+import { Skill } from "../typings";
 
-type Props = {};
+type Props = {
+  skills: Skill[];
+};
 
-function Skills({}: Props) {
+function Skills({ skills }: Props) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -21,25 +24,25 @@ function Skills({}: Props) {
           <div className=" grid grid-cols-4 gap-5">
             {/* Get first half of skills and map */}
 
-            <Skill />
-            <Skill />
-            <Skill />
-            <Skill />
-            <Skill />
-            <Skill />
-            <Skill />
-            <Skill />
+            <SkillChild />
+            <SkillChild />
+            <SkillChild />
+            <SkillChild />
+            <SkillChild />
+            <SkillChild />
+            <SkillChild />
+            <SkillChild />
 
             {/* Get second half of skills and map with direction left */}
 
-            <Skill directionLeft />
-            <Skill directionLeft />
-            <Skill directionLeft />
-            <Skill directionLeft />
-            <Skill directionLeft />
-            <Skill directionLeft />
-            <Skill directionLeft />
-            <Skill directionLeft />
+            <SkillChild directionLeft />
+            <SkillChild directionLeft />
+            <SkillChild directionLeft />
+            <SkillChild directionLeft />
+            <SkillChild directionLeft />
+            <SkillChild directionLeft />
+            <SkillChild directionLeft />
+            <SkillChild directionLeft />
           </div>
         </div>
       </div>

@@ -65,3 +65,5 @@ export interface Social extends SanityBody {
   title: string;
   url: string;
 }
+
+

@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { PhoneIcon, MapPinIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { PageInfo } from "../typings";
 
-type Props = {};
+type Props = {
+  pageInfo: PageInfo;
+};
 
 type Inputs = {
   name: string;
@@ -12,7 +15,7 @@ type Inputs = {
   message: string;
 };
 
-function ContactMe({}: Props) {
+function ContactMe({ pageInfo }: Props) {
   const {
     register,
     handleSubmit,

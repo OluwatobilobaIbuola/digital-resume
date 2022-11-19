@@ -1,11 +1,15 @@
 import Link from "next/link";
 import React from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
+import { urlFor } from "../sanity";
+import { PageInfo } from "../typings";
 import BackgroundCircles from "./BackgroundCircles";
 
-type Props = {};
+type Props = {
+  pageInfo: PageInfo;
+};
 
-function Hero({}: Props) {
+function Hero({ pageInfo }: Props) {
   const [text, count] = useTypewriter({
     words: [
       `Hi, The name's ${"Oluwatobiloba Ibuola"}`,
@@ -26,7 +30,7 @@ function Hero({}: Props) {
       <div className="z-10">
         <img
           className="rounded-full h-32 w-32 mx-auto object-cover"
-          src="https://media-exp1.licdn.com/dms/image/D4D03AQGX0HFB4iOAUQ/profile-displayphoto-shrink_400_400/0/1665818566521?e=1673481600&v=beta&t=PXokv1h3OgCMIlFK5A271QXxQiz_107V7lBxk32QnS0"
+          src={urlFor(pageInfo?.heroImage).url()}
         />
         <h2 className="text-center tracking-[15px] text-sm uppercase text-gray-500 pb-2">
           Software <br className="sm:hidden inline-block" />

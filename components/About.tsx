@@ -1,9 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { PageInfo } from "../typings";
+import { urlFor } from "../sanity";
 
-type Props = {};
+type Props = {
+  pageInfo: PageInfo;
+};
 
-function About({}: Props) {
+function About({ pageInfo }: Props) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -23,7 +27,7 @@ function About({}: Props) {
             transition={{ duration: 1.2 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            src="https://media-exp1.licdn.com/dms/image/D4D03AQGX0HFB4iOAUQ/profile-displayphoto-shrink_400_400/0/1665818566521?e=1673481600&v=beta&t=PXokv1h3OgCMIlFK5A271QXxQiz_107V7lBxk32QnS0"
+            src={urlFor(pageInfo?.profilePic).url()}
             className="flex-shrink-0 w-56 h-56 rounded-full md:rounded-lg md:w-64 md:h-96 xl:w-[500px] xl:h-[600px] object-cover"
           />
           <div className="space-y-8 px-0 md:px-10">
